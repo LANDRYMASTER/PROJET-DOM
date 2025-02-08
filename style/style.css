@@ -70,3 +70,7 @@ main {
 #like {
   color: rgb(240, 29, 29);
 }
+
+#display {
+  display: none;
+}

@@ -1,56 +1,41 @@
 
+// Importation des elemments du DOM dans Mes variable JS
+let TotalPrice = document.querySelector(".total");
+let btn = document.querySelectorAll("i");
+let article = document.querySelectorAll(".list-products>.card-body");
+let Qota = document.querySelectorAll(".quantity");
+
 // declarations de variable local
 
 let PriceTotal = 0;
 let PriceBasket = 0;
 let PriceChausette = 0;
 let PriceBags = 0;
-
-// Importation des elemments du DOM dans Mes variable JS
-let TotalPrice = document.querySelector(".total");
-TotalPrice.innerHTML = `${PriceTotal} $`;  // declaration du panier variable selon les articles choisir
-let Chose = document.querySelectorAll("i");
-
-let Qota = document.querySelectorAll(".quantity");
-
-let NbrBasket = Qota[0];
-
 let quantityBasket = 0;
-
-let NbrChaussette = Qota[1];
-
-let quantityChaussette = 0;
-
-let NbrBags = Qota[2];
-
 let quantityBags = 0;
+let quantityChaussette = 0;
+let NbrBasket = Qota[0];
+let NbrChaussette = Qota[1];
+let NbrBags = Qota[2];
+let AddBaskets = btn[0];
+let MinBaskets = btn[1];
+let RemoveBaskets = btn[2];
+let LikeBaskets = btn[3];
+let AddChausette = btn[4];
+let MinChausette = btn[5];
+let RemoveChausette = btn[6];
+let LikeChausette = btn[7];
+let AddBags = btn[8];
+let MinBags = btn[9];
+let RemoveBags = btn[10];
+let LikeBags = btn[11];
+let articleBaskets = article[0];
+let articleChausettes = article[1];
+let articleBags = article[2];
 
-let AddBaskets = Chose[0];
+// declaration du panier variable selon les articles choisir
+TotalPrice.innerHTML = `${PriceTotal} $`;  
 
-let MinBaskets = Chose[1];
-
-let RemoveBaskets = Chose[0];
-
-
-let LikeBaskets = Chose[3];
-
-let AddChausette = Chose[4];
-
-let MinChausette = Chose[5];
-
-let RemoveChausette = Chose[1];
-
-
-let LikeChausette = Chose[7];
-
-let AddBags = Chose[8];
-
-let MinBags = Chose[9];
-
-let RemoveBags = Chose[2];
-
-
-let LikeBags = Chose[11];
 
 // likez ou dislikez l'article basket
 LikeBaskets.addEventListener("click", () => {
@@ -81,13 +66,20 @@ MinBaskets.addEventListener("click", () => {
     }
 });
 
-// Supprimer toutes les baskets du panier 
-RemoveBaskets.addEventListener("cilck", () => {
-    quantityBasket = 0;
-    PriceTotal -= PriceBasket;
-    PriceBasket = 0;
-    TotalPrice.innerHTML = `${PriceTotal} $`;
-    NbrBasket.innerHTML = `${quantityBasket}`;
+// Supprimer les baskets du panier 
+RemoveBaskets.addEventListener("click", () => {
+    if (confirm("etes vous sur") == true ) {
+        quantityBasket = 0;
+        PriceTotal -= PriceBasket;
+        PriceBasket = 0;
+        TotalPrice.innerHTML = `${PriceTotal} $`;
+        NbrBasket.innerHTML = `${quantityBasket}`;
+        console.log(articleBaskets);
+        articleBaskets.setAttribute("id", "display");
+    }
+    else {
+        alert("Continuez vos achats");
+    }
 });
 
 // likez ou dislikez l'article sac a dos
@@ -119,13 +111,19 @@ MinBags.addEventListener("click", () => {
     }
 });
 
-// Supprimer touts les sac a dos du panier 
-RemoveBags.addEventListener("cilck", () => {
-    quantityBags = 0;
-    PriceTotal -= PriceBags;
-    PriceBags = 0;
-    TotalPrice.innerHTML = `${PriceTotal} $`;
-    NbrBags.innerHTML = `${quantityBags}`;
+// Supprimer les sac a dos du panier 
+RemoveBags.addEventListener("click", () => {
+    if (confirm("etes vous sur") == true ) {
+        quantityBags = 0;
+        PriceTotal -= PriceBags;
+        PriceBags = 0;
+        TotalPrice.innerHTML = `${PriceTotal} $`;
+        NbrBags.innerHTML = `${quantityBags}`;
+        articleBags.setAttribute("id", "display");
+    }
+    else {
+        alert("Continuez vos achats");
+    }
 });
 
 // likez ou dislikez l'article chaussette
@@ -158,12 +156,18 @@ MinChausette.addEventListener("click", () => {
 });
 
 // Supprimer toutes les chaussettes du panier
-RemoveChausette.addEventListener("cilck", () => {
-    quantityChaussette = 0;
-    PriceTotal -= PriceChausette;
-    PriceChausette = 0;
-    TotalPrice.innerHTML = `${PriceTotal} $`;
-    NbrChaussette.innerHTML = `${quantityChaussette}`;
+RemoveChausette.addEventListener("click", () => {
+    if (confirm("etes vous sur") == true ) {
+        quantityChaussette = 0;
+        PriceTotal -= PriceChausette;
+        PriceChausette = 0;
+        TotalPrice.innerHTML = `${PriceTotal} $`;
+        NbrChaussette.innerHTML = `${quantityChaussette}`;
+        articleChausettes.setAttribute("id", "display");
+    }
+    else {
+        alert("Continuez vos achats");
+    }
 });
 
 
