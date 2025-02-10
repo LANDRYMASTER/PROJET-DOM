@@ -33,9 +33,15 @@ let articleBaskets = article[0];
 let articleChausettes = article[1];
 let articleBags = article[2];
 
-// declaration du panier variable selon les articles choisir
-TotalPrice.innerHTML = `${PriceTotal} $`;  
 
+// view      
+
+let actualisation = () => {
+    TotalPrice.innerHTML = `${PriceTotal} $`;
+    NbrBasket.innerHTML = `${quantityBasket}`;
+    NbrBags.innerHTML = `${quantityBags}`;
+    NbrChaussette.innerHTML = `${quantityChaussette}`;
+}
 
 // likez ou dislikez l'article basket
 LikeBaskets.addEventListener("click", () => {
@@ -51,8 +57,7 @@ AddBaskets.addEventListener("click", () => {
     quantityBasket++;
     PriceBasket += 100;
     PriceTotal += 100;
-    TotalPrice.innerHTML = `${PriceTotal} $`;
-    NbrBasket.innerHTML = `${quantityBasket}`;
+    actualisation();
 });
 
 // retirer basket du panier tant qu'il exsite encore des baskets dans le panier
@@ -61,8 +66,7 @@ MinBaskets.addEventListener("click", () => {
         quantityBasket--;
         PriceBasket -= 100;
         PriceTotal -= 100;
-        TotalPrice.innerHTML = `${PriceTotal} $`;
-        NbrBasket.innerHTML = `${quantityBasket}`;
+        actualisation();
     }
 });
 
@@ -72,11 +76,9 @@ RemoveBaskets.addEventListener("click", () => {
         quantityBasket = 0;
         PriceTotal -= PriceBasket;
         PriceBasket = 0;
-        TotalPrice.innerHTML = `${PriceTotal} $`;
-        NbrBasket.innerHTML = `${quantityBasket}`;
-        console.log(articleBaskets);
+        actualisation();
         articleBaskets.setAttribute("id", "display");
-    }
+     }
     else {
         alert("Continuez vos achats");
     }
@@ -96,8 +98,7 @@ AddBags.addEventListener("click", () => {
     quantityBags++;
     PriceBags += 50;
     PriceTotal += 50;
-    TotalPrice.innerHTML = `${PriceTotal} $`;
-    NbrBags.innerHTML = `${quantityBags}`;
+    actualisation();
 });
 
 // retirer sac a dos du panier tant qu'il exsite encore des sac a dos dans le panier
@@ -106,8 +107,7 @@ MinBags.addEventListener("click", () => {
         quantityBags--;
         PriceBags -= 50;
         PriceTotal -= 50;
-        TotalPrice.innerHTML = `${PriceTotal} $`;
-        NbrBags.innerHTML = `${quantityBags}`;
+        actualisation();
     }
 });
 
@@ -117,8 +117,7 @@ RemoveBags.addEventListener("click", () => {
         quantityBags = 0;
         PriceTotal -= PriceBags;
         PriceBags = 0;
-        TotalPrice.innerHTML = `${PriceTotal} $`;
-        NbrBags.innerHTML = `${quantityBags}`;
+        actualisation();
         articleBags.setAttribute("id", "display");
     }
     else {
@@ -140,8 +139,7 @@ AddChausette.addEventListener("click", () => {
     quantityChaussette++;
     PriceChausette += 20;
     PriceTotal += 20;
-    TotalPrice.innerHTML = `${PriceTotal} $`;
-    NbrChaussette.innerHTML = `${quantityChaussette}`;
+    actualisation();
 });
 
 // retirer chausette du panier tant qu'il exsite encore des chausettes dans le panier
@@ -150,8 +148,7 @@ MinChausette.addEventListener("click", () => {
         quantityChaussette--;
         PriceChausette -= 20;
         PriceTotal -= 20;
-        TotalPrice.innerHTML = `${PriceTotal} $`;
-        NbrChaussette.innerHTML = `${quantityChaussette}`;
+        actualisation();
     }
 });
 
@@ -161,13 +158,10 @@ RemoveChausette.addEventListener("click", () => {
         quantityChaussette = 0;
         PriceTotal -= PriceChausette;
         PriceChausette = 0;
-        TotalPrice.innerHTML = `${PriceTotal} $`;
-        NbrChaussette.innerHTML = `${quantityChaussette}`;
+        actualisation();
         articleChausettes.setAttribute("id", "display");
     }
     else {
         alert("Continuez vos achats");
     }
 });
-
-
